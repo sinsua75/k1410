@@ -2,7 +2,7 @@
 <!--
   Infographic generated based on student research report.
   Report Title: 학습 도우미 AI , 어디까지 써야할까? 학생들의 생성형 AI 활용 실태와 학습 태도 분석
-  Date: 2025-05-30
+  Date: 2025-06-10
   Tool: AI-assisted HTML generation
 -->
 <html lang="ko">
@@ -85,6 +85,7 @@
 <body class="bg-page-background p-4 md:p-8">
     <div class="max-w-4xl mx-auto">
 
+        <!-- 0. 제목 및 개요 섹션 -->
         <header class="text-center mb-12 card">
             <h1 class="text-3xl md:text-4xl font-bold mb-2">학습 도우미 AI, 어디까지 써야할까?</h1>
             <p class="text-xl md:text-2xl text-dark-text mb-4">학생들의 생성형 AI 활용 실태와 학습 태도 분석</p>
@@ -93,6 +94,7 @@
         </header>
 
         <main>
+            <!-- 1. 조사 동기와 목적 -->
             <section id="motivation-purpose" class="card">
                 <h2 class="text-2xl font-semibold mb-4">1. 조사 동기와 목적</h2>
                 <div class="space-y-3">
@@ -101,6 +103,7 @@
                 </div>
             </section>
 
+            <!-- 2. 조사 계획 -->
             <section id="investigation-plan" class="card">
                 <h2 class="text-2xl font-semibold mb-4">2. 조사 계획</h2>
                 <div class="grid md:grid-cols-3 gap-4 text-center">
@@ -119,14 +122,17 @@
                 </div>
             </section>
 
+            <!-- 3. 조사 결과 -->
             <section id="results" class="card">
                 <h2 class="text-2xl font-semibold mb-4">3. 조사 결과</h2>
                 
                 <h3 class="text-xl font-semibold mt-6 mb-3">가. 설문조사 분석 결과</h3>
                 <p class="mb-6 text-dark-text">설문에 참여한 학생들은 AI를 학습에 유익한 도구로 인식하고 있으나, 무분별한 사용보다는 신중하고 자기 주도적인 활용이 중요하다고 생각하는 경향을 보였다. AI를 학습에 적극적으로 의존하기보다는, 필요한 순간에 힌트를 얻는 수준으로 제한해 사용하는 것이 적절하다는 의견이 가장 많았다.</p>
 
+                <!-- Chart.js canvas for Survey 1 -->
                 <article class="mb-8 p-4 border border-gray-200 rounded-lg shadow-sm">
                     <h4 class="text-lg font-medium text-primary-blue mb-2">설문 1: AI의 도움을 어느 정도까지 받는 것이 학습에 가장 효과적이라고 생각하나요?</h4>
+                    <!-- Visualization: Chart.js Pie Chart for Survey 1 -->
                     <div class="chart-container w-full max-w-md mx-auto h-72 md:h-80 lg:h-96">
                         <canvas id="survey1Chart"></canvas>
                     </div>
@@ -135,7 +141,8 @@
 
                 <article class="mb-8 p-4 border border-gray-200 rounded-lg shadow-sm">
                     <h4 class="text-lg font-medium text-primary-blue mb-2">설문 2: AI가 답을 알려줄 때, 그 내용을 완전히 이해하고 넘어가는 편인가요?</h4>
-                     <div class="chart-container w-full max-w-md mx-auto h-72 md:h-80 lg:h-96">
+                     <!-- Visualization: Chart.js Bar Chart for Survey 2 -->
+                    <div class="chart-container w-full max-w-md mx-auto h-72 md:h-80 lg:h-96">
                         <canvas id="survey2Chart"></canvas>
                     </div>
                     <p class="text-sm text-center mt-2 text-accent-grey">주요 결과: 대부분의 학생들이 AI 설명을 어느 정도는 이해하며 넘어간다고 인식 (응답수: 19명)</p>
@@ -144,6 +151,7 @@
 
                 <article class="mb-8 p-4 border border-gray-200 rounded-lg shadow-sm">
                     <h4 class="text-lg font-medium text-primary-blue mb-2">설문 3: 생성형 AI를 사용하는 것이 스스로 사고하는 능력이나 지식을 쌓는 데 방해가 된다고 느끼시나요?</h4>
+                    <!-- Visualization: Chart.js Doughnut Chart for Survey 3 -->
                     <div class="chart-container w-full max-w-md mx-auto h-72 md:h-80 lg:h-96">
                         <canvas id="survey3Chart"></canvas>
                     </div>
@@ -157,6 +165,8 @@
                 <div class="grid md:grid-cols-2 gap-6">
                     <article class="p-4 border border-gray-200 rounded-lg shadow-sm">
                         <h4 class="text-lg font-medium text-primary-blue mb-2">인터뷰 1: 조정모 학생</h4>
+                        <!-- Photo of Interviewee Jo Jeong-mo -->
+                        <img src="src/스크린샷 2025-06-10 143349.png" alt="조정모 학생 인터뷰 사진" class="w-full max-w-xs mx-auto my-4 rounded-lg shadow-lg">
                         <p class="text-sm text-dark-text mb-2"><strong>주목할 만한 내용:</strong> AI를 다양한 시각을 제시하는 도구로 인식하나, 맹신하지 않고 보조 수단으로 활용. AI 답변의 부정확성 경험. AI 사용 기준이 명확하지 않음("참참참이나 코카콜라 게임" 농담)은 체계적 가이드라인 부족 현실 반영.</p>
                         <p class="text-sm font-semibold text-dark-text my-1">주요 키워드:</p>
                         <div class="flex flex-wrap">
@@ -184,6 +194,7 @@
                 </div>
             </section>
 
+            <!-- 4. 결론 -->
             <section id="conclusion" class="card">
                 <h2 class="text-2xl font-semibold mb-4">4. 결론</h2>
                 <h3 class="text-xl font-semibold mt-6 mb-3">가. 조사 결과 종합 및 주요 발견점 요약</h3>
@@ -198,7 +209,8 @@
                 <p class="text-dark-text mb-4">학생들은 AI를 학습 도구로 인식하며 적절한 사용 방식을 고민 중. 힌트/참고용 선호, AI 답변 해석 노력은 긍정적. 그러나 사고력 저하 우려, 명확한 사용 기준 부족, 정보 신뢰성 불확실함 등의 문제도 존재. 비판적 수용, 윤리적 인식, 자기주도 학습 태도의 중요성 체감. 이는 한국청소년정책연구원 결과와 유사, 청소년 세대 전체의 과제 반영. AI를 '사고 확장 동반자'로 보고 스스로 판단하는 힘이 중요. AI 리터러시 교육(비판적 수용, 자기주도 전략, 윤리 의식) 필요성 시사.</p>
 
                 <h3 class="text-xl font-semibold mt-6 mb-3">다. 효과적인 AI 활용을 위한 제언</h3>
-                 <div class="space-y-4">
+                 <!-- HTML/CSS Diagram for Suggestions -->
+                <div class="space-y-4">
                     <div class="flex items-start p-3 bg-supporting-light-blue rounded-lg">
                         <span class="text-primary-blue text-2xl mr-3">💡</span>
                         <div>
@@ -233,6 +245,7 @@
                 <p class="text-dark-text">본 조사를 통해 생성형 AI의 효과적인 학습 활용에 대한 깊은 통찰을 얻었다. 앞으로 AI 사용 시 우려를 경계하고 제언을 실천하여, AI와 함께 성장하며 스스로 생각하는 힘과 지식을 키워나갈 것을 다짐한다. 얻은 지식과 경험을 친구들과 공유하며 다 함께 AI 시대를 현명하게 헤쳐나가도록 노력할 것이다.</p>
             </section>
 
+            <!-- 5. 참고자료 -->
             <section id="references" class="card">
                 <h2 class="text-2xl font-semibold mb-4">5. 참고자료</h2>
                 <ul class="list-disc list-inside space-y-2 text-sm text-dark-text">
@@ -256,6 +269,7 @@
             </section>
         </main>
 
+        <!-- 6. 푸터 -->
         <footer class="text-center mt-12 py-6 border-t border-accent-grey">
             <p class="text-sm text-accent-grey">&copy; 2025 미림마이스터고 1학년 4반 4조. All rights reserved.</p>
             <p class="text-xs text-accent-grey mt-1">이 인포그래픽은 제공된 보고서 내용을 기반으로 AI에 의해 생성되었습니다.</p>
@@ -480,5 +494,6 @@
             options: defaultChartOptions
         });
     </script>
-    </body>
+    <!-- HTML 인포그래픽 생성 완료. (2025-06-10) -->
+</body>
 </html>
