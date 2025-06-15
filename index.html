@@ -14,20 +14,20 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
-            font-family: 'Pretendard', sans-serif; /* 기본 폰트를 Pretendard로 가정, 없을 경우 Tailwind 기본 사용 */
+            font-family: 'Pretendard', sans-serif;
             background-color: #F4F7F9;
             color: #263238;
         }
-        /* Custom Colors */
-        .bg-primary-blue { background-color: #6e94cd; }
-        .text-primary-blue { color: #6e94cd; }
-        .border-primary-blue { border-color: #6e94cd; }
+        /* Updated Custom Colors */
+        .bg-primary-blue { background-color: #0D6EFD; }
+        .text-primary-blue { color: #0D6EFD; }
+        .border-primary-blue { border-color: #0D6EFD; }
 
-        .bg-secondary-teal { background-color: #4e6485; }
-        .text-secondary-teal { color: #4e6485; }
+        .bg-secondary-teal { background-color: #4ECDC4; }
+        .text-secondary-teal { color: #4ECDC4; }
 
-        .bg-accent-grey { background-color: #A9A9A9; }
-        .text-accent-grey { color: #A9A9A9; }
+        .bg-accent-grey { background-color: #6c757d; }
+        .text-accent-grey { color: #6c757d; }
 
         .bg-supporting-light-blue { background-color: #E0F2FE; }
         .text-dark-text { color: #263238; }
@@ -36,46 +36,70 @@
 
         .card {
             background-color: #FFFFFF;
-            border-radius: 0.75rem; /* 12px */
+            border-radius: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            margin-bottom: 1.5rem; /* 24px */
-            padding: 1.5rem; /* 24px */
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
         }
         h1, h2, h3 {
             font-weight: 600;
         }
         h1 {
-            color: #5c7fb4; /* Primary Blue */
+            color: #0D6EFD; 
         }
         h2 {
-            color: #263238; /* Dark Text */
-            border-bottom: 2px solid #4e6485; /* Secondary Teal */
+            color: #263238;
+            border-bottom: 2px solid #4ECDC4;
             padding-bottom: 0.5rem;
             margin-top: 1rem;
             margin-bottom: 1rem;
         }
         h3 {
-            color: #5c7fb4; /* Primary Blue */
+            color: #0D6EFD;
             margin-top: 1rem;
             margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+             font-size: 1.125rem; /* 18px */
+             font-weight: 600;
+             color: #0D6EFD;
         }
         .chart-container {
             position: relative;
             margin: auto;
-            /* height: 300px; */ /* Adjusted dynamically or via class */
-            /* width: 100%; */   /* Adjusted dynamically or via class */
         }
         .keyword-tag {
-            background-color: #E0F2FE; /* Supporting Light Blue */
-            color: #5c7fb4; /* Primary Blue */
+            background-color: #E0F2FE;
+            color: #0D6EFD;
             padding: 0.25rem 0.75rem;
-            border-radius: 0.375rem; /* 6px */
+            border-radius: 0.375rem;
             margin: 0.25rem;
             display: inline-block;
-            font-size: 0.875rem; /* 14px */
+            font-size: 0.875rem;
+        }
+        /* Custom Legend Styles */
+        .custom-legend-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem 1rem;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 0.75rem; /* 12px */
+            color: #263238;
+        }
+        .legend-color-box {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+            margin-right: 6px;
         }
 
-        /* Pretendard 폰트 CDN (옵션) */
+        /* Pretendard 폰트 CDN */
         @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css');
         body {
             font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
@@ -85,7 +109,6 @@
 <body class="bg-page-background p-4 md:p-8">
     <div class="max-w-4xl mx-auto">
 
-        <!-- 0. 제목 및 개요 섹션 -->
         <header class="text-center mb-12 card">
             <h1 class="text-3xl md:text-4xl font-bold mb-2">학습 도우미 AI, 어디까지 써야할까?</h1>
             <p class="text-xl md:text-2xl text-dark-text mb-4">학생들의 생성형 AI 활용 실태와 학습 태도 분석</p>
@@ -94,16 +117,20 @@
         </header>
 
         <main>
-            <!-- 1. 조사 동기와 목적 -->
             <section id="motivation-purpose" class="card">
                 <h2 class="text-2xl font-semibold mb-4">1. 조사 동기와 목적</h2>
-                <div class="space-y-3">
-                    <p><strong class="text-primary-blue">가. 조사 동기:</strong> 최근 AI 기술의 일상적 적용 증가, 특히 학생들의 학습 및 과제 수행 시 AI 활용이 늘어남에 따라 자기 주도적 사고 및 학습 능력 저하에 대한 우려가 제기되었다. "어느 정도까지 AI의 도움을 받는 것이 적절하며, 어느 선에서 스스로 학습해야 하는가?"라는 문제의식에서 조사를 시작했다.</p>
-                    <p><strong class="text-primary-blue">나. 조사 목적:</strong> AI를 적절히 활용하면서도 학생 개인의 지식 함양과 사고력 증진을 위한 기준점을 모색하는 것을 목표로 한다. AI 의존을 지양하고 학습 능력을 신장하는 방법과 AI를 효과적인 학습 도구로 활용하는 방법을 균형 있게 파악하여, 또래 학생들과 함께 AI와 현명하게 공존할 수 있는 방향을 제안하고자 한다.</p>
+                <div class="space-y-4">
+                    <div>
+                        <strong class="section-subtitle">가. 조사 동기:</strong>
+                        <p class="mt-1">최근 AI 기술의 일상적 적용 증가, 특히 학생들의 학습 및 과제 수행 시 AI 활용이 늘어남에 따라 자기 주도적 사고 및 학습 능력 저하에 대한 우려가 제기되었다. "어느 정도까지 AI의 도움을 받는 것이 적절하며, 어느 선에서 스스로 학습해야 하는가?"라는 문제의식에서 조사를 시작했다.</p>
+                    </div>
+                    <div>
+                        <strong class="section-subtitle">나. 조사 목적:</strong>
+                        <p class="mt-1">AI를 적절히 활용하면서도 학생 개인의 지식 함양과 사고력 증진을 위한 기준점을 모색하는 것을 목표로 한다. AI 의존을 지양하고 학습 능력을 신장하는 방법과 AI를 효과적인 학습 도구로 활용하는 방법을 균형 있게 파악하여, 또래 학생들과 함께 AI와 현명하게 공존할 수 있는 방향을 제안하고자 한다.</p>
+                    </div>
                 </div>
             </section>
 
-            <!-- 2. 조사 계획 -->
             <section id="investigation-plan" class="card">
                 <h2 class="text-2xl font-semibold mb-4">2. 조사 계획</h2>
                 <div class="grid md:grid-cols-3 gap-4 text-center">
@@ -122,27 +149,26 @@
                 </div>
             </section>
 
-            <!-- 3. 조사 결과 -->
             <section id="results" class="card">
                 <h2 class="text-2xl font-semibold mb-4">3. 조사 결과</h2>
                 
                 <h3 class="text-xl font-semibold mt-6 mb-3">가. 설문조사 분석 결과</h3>
                 <p class="mb-6 text-dark-text">설문에 참여한 학생들은 AI를 학습에 유익한 도구로 인식하고 있으나, 무분별한 사용보다는 신중하고 자기 주도적인 활용이 중요하다고 생각하는 경향을 보였다. AI를 학습에 적극적으로 의존하기보다는, 필요한 순간에 힌트를 얻는 수준으로 제한해 사용하는 것이 적절하다는 의견이 가장 많았다.</p>
 
-                <!-- Chart.js canvas for Survey 1 -->
                 <article class="mb-8 p-4 border border-gray-200 rounded-lg shadow-sm">
-                    <h4 class="text-lg font-medium text-primary-blue mb-2">설문 1: AI의 도움을 어느 정도까지 받는 것이 학습에 가장 효과적이라고 생각하나요?</h4>
+                    <h4 class="text-lg font-medium text-primary-blue mb-2 text-center">설문 1: AI 도움, 어느 정도가 효과적일까?</h4>
+                    <!-- Visualization: Custom HTML Legend for Survey 1 -->
+                    <div id="survey1LegendContainer" class="custom-legend-container"></div>
                     <!-- Visualization: Chart.js Pie Chart for Survey 1 -->
-                    <div class="chart-container w-full max-w-md mx-auto h-72 md:h-80 lg:h-96">
+                    <div class="chart-container w-full max-w-lg mx-auto h-80 md:h-96">
                         <canvas id="survey1Chart"></canvas>
                     </div>
                     <p class="text-sm text-center mt-2 text-accent-grey">주요 결과: 개념 이해용 보조로 AI를 활용하려는 인식도 높은 편임 (응답수: 19명)</p>
                 </article>
 
                 <article class="mb-8 p-4 border border-gray-200 rounded-lg shadow-sm">
-                    <h4 class="text-lg font-medium text-primary-blue mb-2">설문 2: AI가 답을 알려줄 때, 그 내용을 완전히 이해하고 넘어가는 편인가요?</h4>
-                     <!-- Visualization: Chart.js Bar Chart for Survey 2 -->
-                    <div class="chart-container w-full max-w-md mx-auto h-72 md:h-80 lg:h-96">
+                    <h4 class="text-lg font-medium text-primary-blue mb-2 text-center">설문 2: AI 답변, 얼마나 이해하고 넘어갈까?</h4>
+                    <div class="chart-container w-full max-w-md mx-auto h-72 md:h-80">
                         <canvas id="survey2Chart"></canvas>
                     </div>
                     <p class="text-sm text-center mt-2 text-accent-grey">주요 결과: 대부분의 학생들이 AI 설명을 어느 정도는 이해하며 넘어간다고 인식 (응답수: 19명)</p>
@@ -150,51 +176,44 @@
                 </article>
 
                 <article class="mb-8 p-4 border border-gray-200 rounded-lg shadow-sm">
-                    <h4 class="text-lg font-medium text-primary-blue mb-2">설문 3: 생성형 AI를 사용하는 것이 스스로 사고하는 능력이나 지식을 쌓는 데 방해가 된다고 느끼시나요?</h4>
+                    <h4 class="text-lg font-medium text-primary-blue mb-2 text-center">설문 3: AI 사용이 사고력에 방해가 될까?</h4>
+                    <!-- Visualization: Custom HTML Legend for Survey 3 -->
+                    <div id="survey3LegendContainer" class="custom-legend-container"></div>
                     <!-- Visualization: Chart.js Doughnut Chart for Survey 3 -->
-                    <div class="chart-container w-full max-w-md mx-auto h-72 md:h-80 lg:h-96">
+                    <div class="chart-container w-full max-w-lg mx-auto h-80 md:h-96">
                         <canvas id="survey3Chart"></canvas>
                     </div>
                     <p class="text-sm text-center mt-2 text-accent-grey">주요 결과: 생성형 AI의 영향에 대해 중립적 인식이 가장 많은 편 (응답수: 19명)</p>
-                     <p class="text-xs text-center text-accent-grey mt-1">(척도: 1-전혀 그렇지 않다, 5-매우 그렇다)</p>
+                    <p class="text-xs text-center text-accent-grey mt-1">(척도: 1-전혀 그렇지 않다, 5-매우 그렇다)</p>
                 </article>
                 <p class="text-dark-text">AI의 편리함 이면에 있는 자기 주도적 학습 능력 저하 가능성에 대해 상당수의 학생들이 우려를 표하고 있는 것으로 나타난다.</p>
 
-
                 <h3 class="text-xl font-semibold mt-8 mb-3">나. 개별 인터뷰 분석 결과</h3>
-                <div class="grid md:grid-cols-2 gap-6">
+                <div class="flex flex-col space-y-8">
                     <article class="p-4 border border-gray-200 rounded-lg shadow-sm">
                         <h4 class="text-lg font-medium text-primary-blue mb-2">인터뷰 1: 조정모 학생</h4>
-                        <!-- Photo of Interviewee Jo Jeong-mo -->
-                        <img src="src/스크린샷 2025-06-10 143349.png" alt="조정모 학생 인터뷰 사진" class="w-full max-w-xs mx-auto my-4 rounded-lg shadow-lg">
+                        <img src="src/스크린샷 2025-06-10 143349.png" alt="조정모 학생 인터뷰 사진" class="w-full max-w-sm mx-auto my-4 rounded-lg shadow-lg">
                         <p class="text-sm text-dark-text mb-2"><strong>주목할 만한 내용:</strong> AI를 다양한 시각을 제시하는 도구로 인식하나, 맹신하지 않고 보조 수단으로 활용. AI 답변의 부정확성 경험. AI 사용 기준이 명확하지 않음("참참참이나 코카콜라 게임" 농담)은 체계적 가이드라인 부족 현실 반영.</p>
                         <p class="text-sm font-semibold text-dark-text my-1">주요 키워드:</p>
-                        <div class="flex flex-wrap">
-                            <span class="keyword-tag">다양한 시각</span>
-                            <span class="keyword-tag">보조 수단</span>
-                            <span class="keyword-tag">스스로 생각</span>
-                            <span class="keyword-tag">부정확성</span>
-                            <span class="keyword-tag">신뢰도 문제</span>
-                            <span class="keyword-tag">기준 모호</span>
+                        <img src="src/스크린샷 2025-06-10 150717.png" alt="조정모 학생 인터뷰 키워드 워드 클라우드" class="w-full max-w-sm mx-auto my-4 rounded-lg shadow-lg">
+                        <div class="flex flex-wrap justify-center">
+                            <span class="keyword-tag">다양한 시각</span><span class="keyword-tag">보조 수단</span><span class="keyword-tag">스스로 생각</span><span class="keyword-tag">부정확성</span><span class="keyword-tag">신뢰도 문제</span><span class="keyword-tag">기준 모호</span>
                         </div>
                     </article>
                     <article class="p-4 border border-gray-200 rounded-lg shadow-sm">
                         <h4 class="text-lg font-medium text-primary-blue mb-2">인터뷰 2: 정재희 학생</h4>
+                        <img src="src/스크린샷 2025-06-10 150732.png" alt="정재희 학생 인터뷰 사진" class="w-full max-w-sm mx-auto my-4 rounded-lg shadow-lg">
                         <p class="text-sm text-dark-text mb-2"><strong>주목할 만한 내용:</strong> 코딩 테스트 준비 시 GPT 코드를 복사하지 않고 스스로 해석 및 이해 노력. 모르는 내용 빠른 해결에 AI 효율적. 숙제/과제 활용 시 장단점 명확히 인식 (스스로 해결 vs 마감 직전 복붙). AI 사용에 대한 도덕적 경계 경험. AI 사용 기준 없이 모르면 바로 활용.</p>
                         <p class="text-sm font-semibold text-dark-text my-1">주요 키워드:</p>
-                        <div class="flex flex-wrap">
-                            <span class="keyword-tag">코드 해석</span>
-                            <span class="keyword-tag">자기 주도 학습</span>
-                            <span class="keyword-tag">빠른 정보 탐색</span>
-                            <span class="keyword-tag">장단점 인식</span>
-                            <span class="keyword-tag">도덕적 고민</span>
-                            <span class="keyword-tag">즉시 활용</span>
+                        <img src="src/스크린샷 2025-06-10 150744.png" alt="정재희 학생 인터뷰 키워드 워드 클라우드" class="w-full max-w-sm mx-auto my-4 rounded-lg shadow-lg">
+                        <div class="flex flex-wrap justify-center">
+                            <span class="keyword-tag">코드 해석</span><span class="keyword-tag">자기 주도 학습</span><span class="keyword-tag">빠른 정보 탐색</span><span class="keyword-tag">장단점 인식</span><span class="keyword-tag">도덕적 고민</span><span class="keyword-tag">즉시 활용</span>
                         </div>
                     </article>
                 </div>
             </section>
 
-            <!-- 4. 결론 -->
+            <!-- Other sections remain the same -->
             <section id="conclusion" class="card">
                 <h2 class="text-2xl font-semibold mb-4">4. 결론</h2>
                 <h3 class="text-xl font-semibold mt-6 mb-3">가. 조사 결과 종합 및 주요 발견점 요약</h3>
@@ -209,7 +228,6 @@
                 <p class="text-dark-text mb-4">학생들은 AI를 학습 도구로 인식하며 적절한 사용 방식을 고민 중. 힌트/참고용 선호, AI 답변 해석 노력은 긍정적. 그러나 사고력 저하 우려, 명확한 사용 기준 부족, 정보 신뢰성 불확실함 등의 문제도 존재. 비판적 수용, 윤리적 인식, 자기주도 학습 태도의 중요성 체감. 이는 한국청소년정책연구원 결과와 유사, 청소년 세대 전체의 과제 반영. AI를 '사고 확장 동반자'로 보고 스스로 판단하는 힘이 중요. AI 리터러시 교육(비판적 수용, 자기주도 전략, 윤리 의식) 필요성 시사.</p>
 
                 <h3 class="text-xl font-semibold mt-6 mb-3">다. 효과적인 AI 활용을 위한 제언</h3>
-                 <!-- HTML/CSS Diagram for Suggestions -->
                 <div class="space-y-4">
                     <div class="flex items-start p-3 bg-supporting-light-blue rounded-lg">
                         <span class="text-primary-blue text-2xl mr-3">💡</span>
@@ -245,31 +263,16 @@
                 <p class="text-dark-text">본 조사를 통해 생성형 AI의 효과적인 학습 활용에 대한 깊은 통찰을 얻었다. 앞으로 AI 사용 시 우려를 경계하고 제언을 실천하여, AI와 함께 성장하며 스스로 생각하는 힘과 지식을 키워나갈 것을 다짐한다. 얻은 지식과 경험을 친구들과 공유하며 다 함께 AI 시대를 현명하게 헤쳐나가도록 노력할 것이다.</p>
             </section>
 
-            <!-- 5. 참고자료 -->
             <section id="references" class="card">
                 <h2 class="text-2xl font-semibold mb-4">5. 참고자료</h2>
                 <ul class="list-disc list-inside space-y-2 text-sm text-dark-text">
-                    <li>인터뷰 전사 (조정모, 정재희): 미림마이스터고등학교 뉴미디어소프트웨어과 1학년 4반 조정모, 정재희 학생 심층 인터뷰 녹취록 (2025.5.)
-                        <ul class="list-circle list-inside ml-4">
-                            <li>조정모 학생 인터뷰 링크(클로바 노트): <a href="https://clovanote.naver.com/s/uik7vyEFeyGbNW4ZUzkTGDS" target="_blank" class="text-secondary-teal hover:underline">Link</a></li>
-                            <li>정재희 학생 인터뷰 링크(클로바 노트): <a href="https://clovanote.naver.com/s/eiyCJgycTZBNpDtxumH7DSS" target="_blank" class="text-secondary-teal hover:underline">Link</a></li>
-                        </ul>
-                    </li>
-                    <li>조사 설문지 및 질문지: 미림마이스터고 소프트웨어과 1학년 4반 학생 18명 대상 생성형 AI 활용 실태 설문조사(2025)
-                        <ul class="list-circle list-inside ml-4">
-                            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSeS9Z-AUznl4zk6i0PDM5AtaoPKUuLyJD1s0XPjAe6kReD7KQ/viewform" target="_blank" class="text-secondary-teal hover:underline">Survey Link</a></li>
-                        </ul>
-                    </li>
-                    <li>AI 활용 교육 관련 문헌: [한국청소년정책연구원. (2024). 청소년의 생성형 AI 이용실태 및 리터러시 증진 방안 연구. 연구보고 24-기본02.]
-                         <ul class="list-circle list-inside ml-4">
-                            <li><a href="https://www.nypi.re.kr/brdrr/boardrrView.do?brd_id=BDIDX_PJk7xvf7L096m1g7Phd3YC&cont_idx=844&menu_nix=4o9771b7&edomweivgp=R" target="_blank" class="text-secondary-teal hover:underline">Research Link</a></li>
-                        </ul>
-                    </li>
+                    <li>인터뷰 전사 (조정모, 정재희): 미림마이스터고등학교 뉴미디어소프트웨어과 1학년 4반 조정모, 정재희 학생 심층 인터뷰 녹취록 (2025.5.)</li>
+                    <li>조사 설문지 및 질문지: 미림마이스터고 소프트웨어과 1학년 4반 학생 18명 대상 생성형 AI 활용 실태 설문조사(2025)</li>
+                    <li>AI 활용 교육 관련 문헌: [한국청소년정책연구원. (2024). 청소년의 생성형 AI 이용실태 및 리터러시 증진 방안 연구. 연구보고 24-기본02.]</li>
                 </ul>
             </section>
         </main>
 
-        <!-- 6. 푸터 -->
         <footer class="text-center mt-12 py-6 border-t border-accent-grey">
             <p class="text-sm text-accent-grey">&copy; 2025 미림마이스터고 1학년 4반 4조. All rights reserved.</p>
             <p class="text-xs text-accent-grey mt-1">이 인포그래픽은 제공된 보고서 내용을 기반으로 AI에 의해 생성되었습니다.</p>
@@ -277,7 +280,7 @@
     </div>
 
     <script>
-        // Helper function to wrap text for chart labels (approx. 16 chars per line)
+        // Helper function to wrap text for chart labels
         function formatLabel(str, maxCharsPerLine = 16) {
             if (typeof str !== 'string') return str;
             const words = str.split(' ');
@@ -294,22 +297,41 @@
             if (currentLine.trim().length > 0) {
                 lines.push(currentLine.trim());
             }
-            return lines.length > 0 ? lines : [str]; // Return as array for Chart.js multi-line labels
+            return lines.length > 0 ? lines : [str];
         }
 
-        // Chart.js Configurations
+        // Function to create a custom HTML legend
+        function createCustomLegend(chartInstance, legendContainerId) {
+            const legendContainer = document.getElementById(legendContainerId);
+            if (!legendContainer) return;
+
+            const chartData = chartInstance.data;
+            if (!chartData || !chartData.labels || !chartData.datasets || !chartData.datasets.length) return;
+
+            const legendItems = chartData.labels.map((label, i) => {
+                const backgroundColor = chartData.datasets[0].backgroundColor[i];
+                const value = chartData.datasets[0].data[i];
+                return `
+                    <div class="legend-item">
+                        <div class="legend-color-box" style="background-color: ${backgroundColor};"></div>
+                        <span>${label} (${value}%)</span>
+                    </div>
+                `;
+            });
+            legendContainer.innerHTML = legendItems.join('');
+        }
+
         const chartColors = {
-            primaryBlue: '#2A62B6',
+            primaryBlue: '#0D6EFD',
             secondaryTeal: '#4ECDC4',
-            accentGrey: '#A9A9A9',
+            accentGrey: '#6c757d',
             supportingLightBlue: '#E0F2FE',
             darkText: '#263238',
-            // Additional colors for chart data
-            chartColor1: '#2A62B6', // Primary Blue
-            chartColor2: '#4ECDC4', // Secondary Teal
-            chartColor3: '#8BC34A', // Light Green (example)
-            chartColor4: '#FFC107', // Amber (example)
-            chartColor5: '#A9A9A9', // Accent Grey
+            chartColor1: '#0D6EFD',
+            chartColor2: '#4ECDC4',
+            chartColor3: '#8BC34A',
+            chartColor4: '#FFC107',
+            chartColor5: '#6c757d',
         };
         
         const defaultChartOptions = {
@@ -317,36 +339,7 @@
             maintainAspectRatio: false,
             plugins: {
                 legend: {
-                    position: 'bottom',
-                    labels: {
-                        font: { size: 11 },
-                        padding: 15,
-                        // Use boxWidth smaller than fontSize to make it circular
-                        boxWidth: 10,
-                        usePointStyle: true, // Use point style for legend items (circles)
-                        pointStyle: 'circle',
-                         color: chartColors.darkText,
-                         generateLabels: function(chart) {
-                            const data = chart.data;
-                            if (data.labels.length && data.datasets.length) {
-                                return data.labels.map(function(label, i) {
-                                    const meta = chart.getDatasetMeta(0);
-                                    const style = meta.controller.getStyle(i);
-                                    const formattedLabel = formatLabel(label, 12); // Shorter for legend
-                                    return {
-                                        text: formattedLabel,
-                                        fillStyle: style.backgroundColor,
-                                        strokeStyle: style.borderColor,
-                                        lineWidth: style.borderWidth,
-                                        hidden: !chart.getDataVisibility(i),
-                                        index: i,
-                                        fontColor: chartColors.darkText,
-                                    };
-                                });
-                            }
-                            return [];
-                        }
-                    }
+                    display: false // Disable default legend
                 },
                 tooltip: {
                     backgroundColor: 'rgba(0,0,0,0.7)',
@@ -354,20 +347,21 @@
                     bodyFont: { size: 12 },
                     padding: 10,
                     cornerRadius: 4,
-                    displayColors: true, // Show color box in tooltip
+                    displayColors: true,
                     callbacks: {
                         label: function(context) {
                             let label = context.dataset.label || '';
-                            if (label) {
-                                label += ': ';
+                            if (context.label) {
+                                label = context.label;
                             }
-                            if (context.parsed.y !== null && context.chart.config.type !== 'pie' && context.chart.config.type !== 'doughnut') {
-                                label += context.parsed.y + '%';
+                             if (context.parsed !== null) {
+                                if (context.chart.config.type === 'pie' || context.chart.config.type === 'doughnut') {
+                                     label += ': ' + context.parsed + '%';
+                                } else {
+                                     label = context.chart.data.labels[context.dataIndex] + ': ' + context.parsed.y + '%';
+                                }
                             }
-                             if (context.parsed !== null && (context.chart.config.type === 'pie' || context.chart.config.type === 'doughnut')) {
-                                label = context.label + ': ' + context.parsed + '%';
-                            }
-                            return formatLabel(label, 25); // Longer for tooltips
+                            return formatLabel(label, 25);
                         }
                     }
                 }
@@ -375,124 +369,80 @@
         };
 
         // Survey 1: AI 도움 정도 (Pie Chart)
-        const survey1Ctx = document.getElementById('survey1Chart').getContext('2d');
-        new Chart(survey1Ctx, {
+        const survey1Ctx = document.getElementById('survey1Chart');
+        const survey1Chart = new Chart(survey1Ctx, {
             type: 'pie',
             data: {
                 labels: [
-                    '최소한으로만, 꼭 필요할 때만 사용해야 한다.',
-                    '기본 개념만 익힐 때 참고용으로 사용하는것이 좋다',
-                    '중간중간 힌트를 받는 정도로 사용하는 것이적절하다',
-                    '대부분 AI 도움을 받아 빠르게 해결하는 게효율적이다',
-                    '가능한 모든 문제에 AI를 적극적으로 활용하는 게 좋다'
+                    '최소한으로만 사용', '기본 개념 참고용', '중간중간 힌트용', '대부분 AI 도움', '모든 문제에 활용'
                 ],
                 datasets: [{
                     label: '응답 비율 (%)',
                     data: [10.5, 26.3, 52.6, 5.3, 5.3],
-                    backgroundColor: [
-                        chartColors.chartColor1,
-                        chartColors.chartColor2,
-                        chartColors.chartColor3,
-                        chartColors.chartColor4,
-                        chartColors.chartColor5,
-                    ],
+                    backgroundColor: [chartColors.chartColor1, chartColors.chartColor2, chartColors.chartColor3, chartColors.chartColor4, chartColors.chartColor5],
                     borderColor: chartColors.lightBackground,
                     borderWidth: 2
                 }]
             },
-            options: defaultChartOptions
+            options: { ...defaultChartOptions }
         });
+        createCustomLegend(survey1Chart, 'survey1LegendContainer');
 
         // Survey 2: AI 답변 이해도 (Bar Chart)
         const survey2Ctx = document.getElementById('survey2Chart').getContext('2d');
         new Chart(survey2Ctx, {
             type: 'bar',
             data: {
-                labels: [
-                    // '전혀 그렇지 않다.', '그렇지 않다.', // 0% data, can be omitted for clarity
-                    '보통이다', '그렇다', '매우 그렇다.'
-                ],
+                labels: ['보통이다', '그렇다', '매우 그렇다.'],
                 datasets: [{
                     label: '응답 비율 (%)',
-                    data: [10.5, 63.2, 26.3], // Data for '보통이다', '그렇다', '매우 그렇다'
-                    backgroundColor: [
-                        chartColors.chartColor5, // Accent Grey for '보통'
-                        chartColors.chartColor1, // Primary Blue for '그렇다'
-                        chartColors.chartColor2  // Secondary Teal for '매우 그렇다'
-                    ],
-                    borderColor: [
-                        chartColors.chartColor5,
-                        chartColors.chartColor1,
-                        chartColors.chartColor2
-                    ],
+                    data: [10.5, 63.2, 26.3],
+                    backgroundColor: [chartColors.chartColor5, chartColors.chartColor1, chartColors.chartColor2],
                     borderWidth: 1
                 }]
             },
             options: {
                 ...defaultChartOptions,
+                plugins: {
+                     ...defaultChartOptions.plugins,
+                     legend: { display: false }
+                },
                 scales: {
                     y: {
                         beginAtZero: true,
-                        max: 70, // Adjusted max for better visualization
-                        ticks: {
-                            callback: function(value) {
-                                return value + '%';
-                            },
-                            color: chartColors.darkText
-                        },
-                        grid: {
-                            color: '#e0e0e0' // Lighter grid lines
-                        }
+                        max: 70,
+                        ticks: { callback: value => value + '%', color: chartColors.darkText },
+                        grid: { color: '#e0e0e0' }
                     },
                     x: {
-                         ticks: {
+                        ticks: {
                             color: chartColors.darkText,
                             font: { size: 11 },
-                            callback: function(value, index, ticks) {
-                                const label = this.getLabelForValue(value);
-                                return formatLabel(label, 8); // Shorter labels for x-axis
-                            }
+                            callback: function(value) { return this.getLabelForValue(value); }
                         },
-                        grid: {
-                            display: false // Hide x-axis grid lines
-                        }
+                        grid: { display: false }
                     }
                 },
-                plugins: {
-                    ...defaultChartOptions.plugins,
-                    legend: { display: false } // Hide legend for bar chart if only one dataset
-                }
             }
         });
 
         // Survey 3: AI 사용의 방해 요인 (Doughnut Chart)
-        const survey3Ctx = document.getElementById('survey3Chart').getContext('2d');
-        new Chart(survey3Ctx, {
+        const survey3Ctx = document.getElementById('survey3Chart');
+        const survey3Chart = new Chart(survey3Ctx, {
             type: 'doughnut',
             data: {
-                labels: [
-                    '전혀 그렇지 않다', 
-                    '그렇지않다', 
-                    '보통이다', 
-                    '그렇다', 
-                    '매우 그렇다'
-                ],
+                labels: ['전혀 그렇지 않다', '그렇지 않다', '보통이다', '그렇다', '매우 그렇다'],
                 datasets: [{
                     label: '응답 비율 (%)',
                     data: [5.3, 26.3, 31.6, 26.3, 10.5],
-                    backgroundColor: [
-                        chartColors.chartColor3, // Light Green
-                        chartColors.chartColor2, // Teal
-                        chartColors.chartColor5, // Grey
-                        chartColors.chartColor4, // Amber
-                        chartColors.primaryBlue, // Darker Blue
-                    ],
+                    backgroundColor: [chartColors.chartColor3, chartColors.chartColor2, chartColors.chartColor5, chartColors.chartColor4, chartColors.primaryBlue],
                     borderColor: chartColors.lightBackground,
                     borderWidth: 2
                 }]
             },
-            options: defaultChartOptions
+            options: { ...defaultChartOptions }
         });
+        createCustomLegend(survey3Chart, 'survey3LegendContainer');
     </script>
     <!-- HTML 인포그래픽 생성 완료. (2025-06-10) -->
 </body>
